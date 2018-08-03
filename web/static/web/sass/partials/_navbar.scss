@@ -1,0 +1,14 @@
+body > nav {
+    color: $navbar_font_color;
+    background-color: $navbar_color;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
