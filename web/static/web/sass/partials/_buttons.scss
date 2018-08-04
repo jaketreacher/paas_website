@@ -25,3 +25,32 @@ button {
         color: $navbar_font_hover_color;
     }
 }
+
+a {
+    &.btn {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    &.btn-hang {
+        text-transform: uppercase;
+        border: 10px solid black;
+        border-radius: 50px;
+        line-height: 2em;
+        width: 350px;
+        padding: 10px;
+
+        font-size: 1.25em;
+
+        margin: 10px auto;
+        display: block;
+        text-align: center;
+
+        @include desktop {
+            position: absolute;
+            top: 150px;
+            right: 150px;
+            transform: rotate(-90deg);
+        }
+    }
+}

@@ -1,0 +1,32 @@
+#about {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+
+    .logo {
+        text-align: center;
+        img {
+            max-width: 100%;
+        }
+    }
+
+    @include desktop {
+        display: flex;
+        height: 100vh;
+        flex-direction: row-reverse;
+        align-items: center;
+
+        .text {
+            min-width: 30%;
+            font-size: 1.5em;
+        }
+
+        .logo {
+            flex-grow: 1;
+            margin-right: 30px;
+            img {
+                max-width: 400px;
+            }
+        }
+    }
+}
