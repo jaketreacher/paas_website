@@ -1,9 +1,19 @@
-{% extends 'web/base.html' %}
-
+{% extends "web/base.html" %}
 
 {% block title %}
-my title lul
+    {{ block.super }} - Home
 {% endblock title %}
+
 {% block content %}
-Hey
+    <h1 id="intro">
+        The<br>
+        Performing Arts<br>
+        Alumnui Society<br>
+        is the answer to<br>
+        all your post-<br>
+        PAANDA prayers.
+    </h1>
+    <div id="home-logo">
+        <img src="http://via.placeholder.com/300x300" alt="Placeholder">
+    </div>
 {% endblock content %}
