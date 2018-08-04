@@ -1,8 +1,9 @@
 @import "../modules/all";
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 20px;
+    font-weight: 300;
     background-color: $background_color;
 }
 
@@ -20,7 +21,7 @@ h2,
 h3 {
     margin-top: 0;
     text-transform: uppercase;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 // Import Individual pages
