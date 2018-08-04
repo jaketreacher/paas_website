@@ -1,0 +1,23 @@
+#memberships {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+
+    a:last-of-type {
+        display: block;
+        text-align: center;
+        font-size: 36px;
+    }
+
+    @include desktop {
+        margin: 20% 0 0 20%;
+
+        .text {
+            width: 40%;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    }
+}
