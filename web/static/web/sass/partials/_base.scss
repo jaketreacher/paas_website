@@ -1,17 +1,53 @@
 @import "../modules/all";
 
-@import "navbar";
-
-* {
-    box-sizing: border-box;
-}
-
-html,
 body {
-    margin: 0;
-    padding: 0;
-}
-
-body {
+    font-family: 'Roboto', sans-serif;
     background-color: $background_color;
+}
+
+main {
+    padding: 10px;
+
+    @include desktop {
+        // Account for sidebar
+        padding-right: $navbar_width;
+    }
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+#intro {
+    @include tablet {
+        margin-top: 100px;
+        margin-left: 50px;
+    }
+}
+
+#home-logo {
+    width: 100%;
+    text-align: center;
+    img {
+        max-width: 300px;
+    }
+
+    @include tablet {
+        position: absolute;
+
+        bottom: 30px;
+    }
+
+    @include desktop {
+        position: absolute;
+        
+        left: 0; // Reverse #main padding
+        bottom: 30px;
+        padding-right: calc(#{$navbar_width} + 30px);
+        text-align: right;
+    }
 }

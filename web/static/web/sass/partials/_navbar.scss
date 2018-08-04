@@ -1,8 +1,26 @@
-body > nav {
+#main-nav {
     color: $navbar_font_color;
     background-color: $navbar_color;
 
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include desktop {
+        width: $navbar_width;
+        left: auto;
+        right: 0;
+
+        button {
+            display: none;
+        }
+    }
+
     ul {
+        @include expand;
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -10,5 +28,65 @@ body > nav {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include desktop {
+            margin-left: 20px;
+            height: 95%;
+            justify-content: flex-end;
+            align-items: baseline;
+        }
+    }
+
+    li {
+        font-size: 25px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &.selected {
+            color: $navbar_font_select_color;
+        }
+
+        &:hover {
+            color: $navbar_font_hover_color;
+        }
+    }
+
+    &.collapsed {
+        display: none;
+
+        @include desktop {
+            display: block;
+        }
+    }
+}
+
+#navbar-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+
+    background-color: $navbar_color;
+    color: $navbar_font_color;
+    border-radius: 100%;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+    cursor: pointer;
+
+    span {
+        @include center;
+    }
+
+    &:hover {
+        color: $navbar_font_hover_color;
+    }
+
+    &.hidden {
+        display: none;
+    }
+
+    @include desktop {
+        display: none;
     }
 }
