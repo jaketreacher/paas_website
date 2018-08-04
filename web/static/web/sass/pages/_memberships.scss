@@ -2,6 +2,7 @@
     max-width: 800px;
     width: 100%;
     margin: 0 auto;
+    text-align: left;
 
     a:last-of-type {
         display: block;
@@ -10,7 +11,7 @@
     }
 
     @include desktop {
-        margin: 20% 0 0 20%;
+        margin: 15vh 0 0 15vw;
 
         .text {
             width: 40%;

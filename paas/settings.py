@@ -121,5 +121,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Temporarily grab link from .env
+# Temporarily grab info from .env
 FORM_LINK = os.getenv("FORM_LINK")
+CONTACT_EMAIL = os.getenv("CONTACT_EMAIL")
+CONTACT_FACEBOOK = os.getenv("CONTACT_FACEBOOK")
+CONTACT_INSTAGRAM = os.getenv("CONTACT_INSTAGRAM")
+CONTACT_ABN = os.getenv("CONTACT_ABN")
