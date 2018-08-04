@@ -1,4 +1,6 @@
 #main-nav {
+    z-index: $z_navbar;
+    
     color: $navbar_font_color;
     background-color: $navbar_color;
 
@@ -62,6 +64,7 @@
 }
 
 #navbar-toggle {
+    z-index: $z_navbar;
     position: fixed;
     bottom: 30px;
     right: 30px;
