@@ -26,3 +26,7 @@ def contact(request):
         "abn": settings.CONTACT_ABN
     }
     return render(request, "web/pages/contact.html", params)
+
+
+def balltampering(request):
+    return render(request, "web/pages/balltampering.html")
