@@ -1,8 +1,4 @@
 #about {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-
     .logo {
         text-align: center;
         img {
@@ -12,9 +8,8 @@
 
     @include desktop {
         display: flex;
-        height: 100vh;
         flex-direction: row-reverse;
-        align-items: center;
+        align-items: flex-start;
 
         .text {
             min-width: 30%;

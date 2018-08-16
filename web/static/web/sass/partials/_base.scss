@@ -2,17 +2,28 @@
 
 body {
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     background-color: $background_color;
+    @include desktop {
+        padding-right: $navbar_width;
+    }
 }
 
 main {
     padding: 10px;
 
+    min-width: 300px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+
+    @include tablet {
+        margin-top: 50px;
+    }
+
     @include desktop {
-        // Account for sidebar
-        padding-right: calc(#{$navbar_width} + 30px);
+        margin-top: 100px;
     }
 }
 
