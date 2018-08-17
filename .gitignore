@@ -109,3 +109,6 @@ venv.bak/
 *.css.map
 *.sass.map
 *.scss.map
+
+# Static Folder
+static
