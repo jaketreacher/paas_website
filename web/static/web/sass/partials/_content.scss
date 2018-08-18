@@ -1,0 +1,51 @@
+.about {
+    @include desktop {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+
+        .logo {
+            position: static;
+            align-self: center;
+            flex-grow: 1;
+            margin-right: 30px;
+            img {
+                max-width: 400px;
+            }
+        }
+    }
+}
+
+.text {
+    @include desktop {
+        width: 50%;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        display: inline-block;
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 30px;
+    display: inline-block;
+    text-align: center;
+    left: 0;
+    width: 100%;
+
+    @include desktop {
+        text-align: left;
+        left: auto;
+        width: auto;
+    }
+}

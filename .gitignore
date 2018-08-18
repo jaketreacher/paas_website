@@ -111,4 +111,4 @@ venv.bak/
 *.scss.map
 
 # Static Folder
-static
+/static
