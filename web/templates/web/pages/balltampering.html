@@ -6,8 +6,16 @@
 {% endblock title %}
 
 {% block content %}
-    <div id="ballz" style="background-image:url({% static 'web/images/ball_background.jpg' %})">
-        <div style="background-image:url({% static 'web/images/ball_info.png' %})"></div>
+    <div id="ballz">
+        <div style="background-image:url({% static 'web/images/ball_background.jpg' %})">
+            <div style="background-image:url({% static 'web/images/ball_info.png' %})"></div>
+        </div>
+        <div class="hang-group">
+            <a class="btn btn-hang" href="https://trybooking.com/XODS" target="_blank">Buy Tickets</a>
+        </div>
     </div>
 
+    <a id="purchase" class="btn-mobile" href="https://trybooking.com/XODS" target="_blank">
+        <span>Buy</span>
+    </a>
 {% endblock content %}

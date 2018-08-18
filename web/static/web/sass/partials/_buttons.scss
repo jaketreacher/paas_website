@@ -26,6 +26,30 @@ button {
     }
 }
 
+.btn-mobile {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+
+    background-color: $navbar_color;
+    color: $navbar_font_color;
+    border-radius: 100%;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+    cursor: pointer;
+
+    span {
+        @include center;
+    }
+
+    &:hover {
+        color: $navbar_font_hover_color;
+    }
+
+    @include desktop {
+        display: none;
+    }
+}
+
 a {
     &.btn {
         color: inherit;
