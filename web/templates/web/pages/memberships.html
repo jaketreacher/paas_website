@@ -6,21 +6,19 @@
 {% endblock title %}
 
 {% block content %}
-    <div id="memberships">
-        <div class="text">
-            <h1>Want to become a PAAS Member?</h1>
-            <p>
-                Includes discounted event tickets,
-                access to PAAS' rehearsal space(s),
-                deliberative voting on PAAS' productions,
-                expenditure, and annual electons.
-            </p>
-        </div>
-        <a  class="btn btn-hang" 
-            href="{% static 'web/files/Membership-Principles.pdf' %}"
-            target="_blank">
-                Membership Principles
-        </a>
-        <a href="{{ form_link }}">Google Form</a>
+    <div class="text">
+        <h1>Want to become a PAAS Member?</h1>
+        <p>
+            Includes discounted event tickets,
+            access to PAAS' rehearsal space(s),
+            deliberative voting on PAAS' productions,
+            expenditure, and annual electons.
+        </p>
     </div>
+    <a  class="btn btn-hang" 
+        href="{% static 'web/files/Membership-Principles.pdf' %}"
+        target="_blank">
+            Membership Principles
+    </a>
+    <a href="{{ form_link }}">Google Form</a>
 {% endblock content %}

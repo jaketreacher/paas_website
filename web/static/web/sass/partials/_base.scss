@@ -5,25 +5,31 @@ body {
     font-size: 16px;
     font-weight: 300;
     background-color: $background_color;
-    @include desktop {
-        padding-right: $navbar_width;
-    }
 }
 
 main {
-    padding: 10px;
-
-    min-width: 300px;
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-
-    @include tablet {
-        margin-top: 50px;
-    }
+    position: relative;
+    min-height: 100vh;
 
     @include desktop {
-        margin-top: 100px;
+        padding-right: $navbar_width;
+    }
+
+    > div {
+        padding: 10px;
+    
+        min-width: 300px;
+        max-width: 740px;
+        width: 100%;
+        margin: 0 auto;
+    
+        @include tablet {
+            padding-top: 50px;
+        }
+    
+        @include desktop {
+            padding-top: 100px;
+        }
     }
 }
 
@@ -36,8 +42,4 @@ h3 {
 }
 
 // Import Individual pages
-@import "../pages/home";
-@import "../pages/about";
-@import "../pages/memberships";
-@import "../pages/contact";
 @import "../pages/balltampering";

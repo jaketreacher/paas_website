@@ -6,27 +6,25 @@
 {% endblock title %}
 
 {% block content %}
-   <div id="contact">
-       <div class="text">
-            <h1>Want to know more?</h1>
-            <p>
-                Have any queries or qualms?<br>
-                Get in touch!
-            </p>
-            <p>
-                <a href="mailto:{{ email }}">{{ email }}</a>
-            </p>
-       </div>
-       <div class="icons">
-            <a href="{{ facebook }}" target="_blank">
-                <img src="{% static 'web/images/facebook.png' %}" alt="Facebook">
-            </a>
-            <a href="{{ instagram }}" target="_blank">
-                <img src="{% static 'web/images/instagram.png' %}" alt="Instagram">
-            </a>
-       </div>
-       <footer>
-            <span><small>ABN {{ abn }}</small></span>
-       </footer>
-   </div> 
+    <div class="text">
+        <h1>Want to know more?</h1>
+        <p>
+            Have any queries or qualms?<br>
+            Get in touch!
+        </p>
+        <p>
+            <a href="mailto:{{ email }}">{{ email }}</a>
+        </p>
+    </div>
+    <div class="icons">
+        <a href="{{ facebook }}" target="_blank">
+            <img src="{% static 'web/images/facebook.png' %}" alt="Facebook">
+        </a>
+        <a href="{{ instagram }}" target="_blank">
+            <img src="{% static 'web/images/instagram.png' %}" alt="Instagram">
+        </a>
+    </div>
+    <footer>
+        <span><small>ABN {{ abn }}</small></span>
+    </footer>
 {% endblock content %}

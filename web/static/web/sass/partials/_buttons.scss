@@ -54,3 +54,19 @@ a {
         }
     }
 }
+
+.icons {
+    a {
+        width: 100px;
+        overflow: hidden;
+        display: inline-block;
+        margin: 10px;
+
+        img {
+            width: 100%;
+            &:hover {
+                filter: invert(100%);
+            }
+        }
+    }
+}
