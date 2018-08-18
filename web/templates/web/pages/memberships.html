@@ -15,10 +15,8 @@
             expenditure, and annual electons.
         </p>
     </div>
-    <a  class="btn btn-hang" 
-        href="{% static 'web/files/Membership-Principles.pdf' %}"
-        target="_blank">
-            Membership Principles
-    </a>
-    <a href="{{ form_link }}">Google Form</a>
+    <div class="hang-group">
+        <a class="btn btn-hang" href="{% static 'web/files/Membership-Principles.pdf' %}" target="_blank">Membership Principles</a>
+        <a class="btn btn-hang" href="{{ form_link }}" target="_blank">Join Now</a>
+    </div>
 {% endblock content %}

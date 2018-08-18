@@ -30,6 +30,10 @@ a {
     &.btn {
         color: inherit;
         text-decoration: inherit;
+
+        &:hover {
+            color: white;
+        }
     }
 
     &.btn-hang {
@@ -46,12 +50,29 @@ a {
         display: block;
         text-align: center;
 
-        @include desktop {
-            position: absolute;
-            top: 150px;
-            right: 150px;
-            transform: rotate(-90deg);
+        flex-shrink: 0;
+
+        &:hover {
+            border-color: white;
         }
+
+        @include desktop {
+            margin: 10px; // space between flex items
+        }
+    }
+}
+
+.hang-group {
+    @include desktop {
+        position: fixed;
+        display: flex;
+        flex-direction: row-reverse;
+        top: 0;
+        right: 350px;
+        width: 100vh;
+        transform-origin: top right;
+        transform: rotate(-90deg);
+        overflow-x: scroll;
     }
 }
 
