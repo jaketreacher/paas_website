@@ -4,13 +4,6 @@ import sys
 from ast import literal_eval
 
 if __name__ == "__main__":
-    with open(".env", "r") as ptr:
-        for line in ptr:
-            line = line.strip()
-            if "#" != line[0]:
-                var, val = line.split("=", 1)
-                os.environ[var] = literal_eval(val)
-
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "paas.settings")
     try:
         from django.core.management import execute_from_command_line
