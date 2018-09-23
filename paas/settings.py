@@ -42,15 +42,18 @@ INSTALLED_APPS = [
     'compressor'
 ]
 
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-)
+]
 
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'npx sass {infile} {outfile}'),
-)
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+
+COMPRESS_PRECOMPILERS = [
+    ('text/x-scss', 'node-sass {infile} {outfile}')
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,8 +149,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Temporarily grab info from .env
-FORM_LINK = config('FORM_LINK')
-CONTACT_EMAIL = config('CONTACT_EMAIL')
-CONTACT_FACEBOOK = config('CONTACT_FACEBOOK')
-CONTACT_INSTAGRAM = config('CONTACT_INSTAGRAM')
-CONTACT_ABN = config('CONTACT_ABN')
+MEMBER_FORM_LINK = config('MEMBER_FORM_LINK', '')
+FRIEND_FORM_LINK = config('FRIEND_FORM_LINK', '')
+CONTACT_EMAIL = config('CONTACT_EMAIL', '')
+CONTACT_FACEBOOK = config('CONTACT_FACEBOOK', '')
+CONTACT_INSTAGRAM = config('CONTACT_INSTAGRAM', '')
+CONTACT_ABN = config('CONTACT_ABN', '')

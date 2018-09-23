@@ -8,8 +8,8 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("about", views.about, name="about"),
     path("memberships", views.memberships, name="memberships"),
+    path("friends", views.friends, name="friends"),
     path("contact", views.contact, name="contact"),
-    path("balltampering", views.balltampering, name="balltampering")
 ]
 
 if not settings.DEBUG:
