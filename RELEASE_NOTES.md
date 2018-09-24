@@ -1,5 +1,9 @@
 # Release notes
 
+## Version 0.1.2
+- Enhance reading .env files
+- Configure Ansible deployment
+
 ## Version 0.1.1
 - Redesign CSS layout
 - Fix Sidebar Button
