@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: no
+  remote_user: ubuntu
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+  pre_tasks:
+    - name: Pre-apt
+      apt:
+        name: "{{ item }}"
+      loop:
+        - build-essential
+        - python3-dev
+  roles:
+    - role: hamlet
+      vars:
+        - hamlet: {
+          project: {
+            dir: "/srv/sites/paas.org.au/production",
+            name: "paas",
+            env: "production.env"
+          },
+          git: {
+            repo: "https://github.com/jaketreacher/paas_website.git",
+            branch: production
+          },
+          daemon_name: paas.org.au,
+          server_name: paas.org.au,
+        }
+        - letsencrypt_enabled: True
+        - letsencrypt_domains: ['paas.org.au']
