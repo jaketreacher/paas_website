@@ -3,6 +3,7 @@ django-appconf==1.0.2
 django-compressor==2.2
 django-extensions==2.1.2
 pep8==1.7.1
+Pillow==5.2.0
 python-decouple==3.1
 pytz==2018.5
 rcssmin==1.0.6
