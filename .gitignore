@@ -113,6 +113,9 @@ venv.bak/
 # Static Folder
 /static
 
+# Media Folder
+/media
+
 # Deploy
 production.env
 inventory
