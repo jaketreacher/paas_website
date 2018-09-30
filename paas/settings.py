@@ -50,7 +50,7 @@ STATICFILES_FINDERS = [
 ]
 
 COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
+COMPRESS_OFFLINE = config('COMPRESS_OFFLINE', True, cast=bool)
 
 COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'node-sass {infile} {outfile}')
