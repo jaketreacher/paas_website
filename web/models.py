@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Event(models.Model):
@@ -6,9 +7,6 @@ class Event(models.Model):
     slug = models.SlugField()
     url = models.URLField(help_text="The location of the booking site.")
     open_date = models.DateTimeField(help_text="The date/time which the event will become visible.")
-
-    asset_background = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
-    asset_art = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
 
     END_ACTION_CHOICES = (
         ('A', 'Archive'),
@@ -23,7 +21,7 @@ class Event(models.Model):
     )
 
     def event_range(self):
-        query_set = self.eventdatetime_set.order_by('datetime')
+        query_set = self.eventdatetime_set
 
         formatted_string = ""
 
@@ -40,6 +38,9 @@ class Event(models.Model):
         return formatted_string
     event_range.short_description = 'Event Range'
 
+    class Meta:
+        ordering = ('open_date',)
+
     def __str__(self):
         return self.name
 
@@ -53,8 +54,20 @@ class EventDateTime(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     datetime = models.DateTimeField()
 
+    class Meta:
+        ordering = ('datetime',)
+
     def __str__(self):
         return self.datetime.strftime(self.FORMAT_STRING)
 
     def __repr__(self):
         return f"<EventDateTime: '{self}', {self.event} ({self.pk})>"
+
+
+class EventPage(models.Model):
+    background = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
+    mobile = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
+    tablet = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
+    desktop = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
+
+    event = models.OneToOneField(Event, on_delete=models.CASCADE)
