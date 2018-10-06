@@ -1,5 +1,8 @@
 from django.db import models
+from django.template import loader, Context
 from django.utils import timezone
+
+import os
 
 
 class Event(models.Model):
@@ -69,5 +72,33 @@ class EventPage(models.Model):
     mobile = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
     tablet = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
     desktop = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
-
+    css = models.TextField(blank=True, null=True)
     event = models.OneToOneField(Event, on_delete=models.CASCADE)
+
+    def _build_css(self):
+        template = loader.get_template('web/pages/event.css.html')
+        style = ' '.join(template.render({'eventpage': self}).split())  # join/split used to remove excessive whitespace
+        type(self).objects.filter(id=self.id).update(css=style)
+
+    def _clean_images(self, old_self):
+        for field in old_self._meta.get_fields():
+            if isinstance(field, models.ImageField):
+                old_image = getattr(old_self, field.name)
+                new_image = getattr(self, field.name)
+                # if the field existed before and it has changed
+                if old_image and old_image != new_image:
+                    # remove the previous file
+                    try:
+                        os.remove(old_image.path)
+                    except FileNotFoundError:
+                        pass
+
+    def save(self, *args, **kwargs):
+        try:
+            old_self = EventPage.objects.get(pk=self.pk)
+        except EventPage.DoesNotExist:
+            old_self = None
+        super(EventPage, self).save(*args, **kwargs)
+        if old_self:
+            self._clean_images(old_self)
+        self._build_css()

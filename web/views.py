@@ -1,5 +1,8 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+
+from .models import Event
 
 
 def home(request):
@@ -33,3 +36,11 @@ def contact(request):
         "abn": settings.CONTACT_ABN
     }
     return render(request, "web/pages/contact.html", params)
+
+
+def event_view(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    params = {
+        'event': event
+    }
+    return render(request, "web/pages/event.html", params)

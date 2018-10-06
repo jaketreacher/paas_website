@@ -17,6 +17,8 @@
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'web/sass/main.scss' %}">
     {% endcompress %}
+
+    {% block head_extras %}{% endblock head_extras %}
 </head>
 <body>
     {% include "web/components/navbar.html" %}

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db.models import Count
+from django.conf import settings
 
 from .models import Event, EventDateTime, EventPage
 
@@ -10,6 +11,10 @@ class EventDateTimeInline(admin.TabularInline):
 
 class EventPageInline(admin.StackedInline):
     model = EventPage
+    if settings.DEBUG:
+        readonly_fields = ['css']
+    else:
+        exclude = ['css']
 
 
 @admin.register(Event)
