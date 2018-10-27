@@ -10,7 +10,7 @@
             flex-grow: 1;
             margin-right: 30px;
             img {
-                max-width: 400px;
+                max-width: 350px;
             }
         }
     }
@@ -18,7 +18,7 @@
 
 .text {
     @include desktop {
-        width: 50%;
+        width: 60%;
     }
 
     p {
