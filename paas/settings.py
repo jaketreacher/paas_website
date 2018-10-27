@@ -53,7 +53,7 @@ COMPRESS_ENABLED = not DEBUG
 COMPRESS_OFFLINE = config('COMPRESS_OFFLINE', True, cast=bool)
 
 COMPRESS_PRECOMPILERS = [
-    ('text/x-scss', 'node-sass {infile} {outfile}')
+    ('text/x-scss', 'sassc {infile} {outfile}')
 ]
 
 MIDDLEWARE = [
