@@ -1,0 +1,48 @@
+.events-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.event-card {
+    height: 550px;
+    width: 225px;
+
+    margin: 10px;
+    overflow: hidden;
+
+    &__preview {
+        margin: 0 auto;
+
+        height: 400px;
+        max-width: 225px;
+
+        background-position: center;
+        background-size: cover;
+    }
+
+    &__details {
+        text-align: center;
+
+        padding-top: 10px;
+
+        &__section {
+            padding-bottom: 0.5em;
+
+            p {
+                margin: 0;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+
+        text-align: center;
+    }
+
+    &--heading {
+        font-size: 1.5em;
+    }
+}

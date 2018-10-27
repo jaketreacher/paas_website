@@ -1,24 +1,45 @@
 from django.db import models
+from django.db.models import Case, F, Max, Q, Value, When
 from django.template import loader, Context
 from django.utils import timezone
 
 import os
+from collections import namedtuple
+
+
+class EventManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset() \
+            .annotate(last_show=Max('eventdatetime__datetime')) \
+            .annotate(status=Case(
+                When(open_date__gte=timezone.now(), then=Value(Event.STATE.HIDDEN)),
+                When(last_show__lt=timezone.now(), then='end_action'),
+                default=Value(Event.STATE.ACTIVE),
+                output_field=models.CharField(max_length=1)
+            ))
 
 
 class Event(models.Model):
     name = models.CharField(max_length=128)
-    slug = models.SlugField()
-    url = models.URLField(help_text="The location of the booking site.")
+    subtitle = models.CharField(max_length=128, blank=True, null=True)
+    location = models.CharField(max_length=128, blank=True, null=True)
+    slug = models.SlugField(max_length=32, unique=True)
+    booking_url = models.URLField(help_text="ex. TryBooking URL", blank=True, null=True)
     open_date = models.DateTimeField(help_text="The date/time which the event will become visible.")
 
+    objects = EventManager()
+
+    STATE = namedtuple('STATE', ['ACTIVE', 'ARCHIVED', 'HIDDEN'])('A', 'R', 'H')
+
     END_ACTION_CHOICES = (
-        ('A', 'Archive'),
-        ('H', 'Hide'),
+        (STATE.ARCHIVED, 'Archive'),
+        (STATE.HIDDEN, 'Hide'),
     )
+
     end_action = models.CharField(
         max_length=1,
         choices=END_ACTION_CHOICES,
-        default=END_ACTION_CHOICES[0][0],
+        default=STATE.ARCHIVED,
         help_text="The action to take after the final event date has passed. "
                   "Archived events will display under 'Past Events'. Hidden events will not be shown."
     )
@@ -41,6 +62,20 @@ class Event(models.Model):
         return formatted_string
     event_range.short_description = 'Event Range'
 
+    @property
+    def get_preview_url(self):
+        sizes = ['mobile', 'tablet', 'desktop']
+
+        for size in sizes:
+            image = getattr(self.eventpage, size)
+            if image:
+                break
+
+        if image:
+            return image.url
+        else:
+            return None
+
     class Meta:
         ordering = ('open_date',)
 
@@ -52,8 +87,8 @@ class Event(models.Model):
 
 
 class EventDateTime(models.Model):
-    FORMAT_STRING = '%a, %d %b %Y @ %I:%M%p'  # example: `Mon, 01 Jan 1990 @ 12:01PM`
-    FORMAT_STRING_SHORT = '%a, %d %b %Y'  # example: `Mon, 01 Jan 1990`
+    FORMAT_STRING = '%a, %d %b %Y'  # example: `Mon, 01 Jan 1990`
+    FORMAT_STRING_SHORT = '%d.%m.%y'  # example: `01.01.90`
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     datetime = models.DateTimeField()
 

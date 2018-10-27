@@ -1,0 +1,14 @@
+<div class="event-card">
+    <div class="event-card__preview" style="background-image: url('{{ event.get_preview_url }}')"></div>
+    <div class="event-card__details">
+        <div class="event-card__details__section">
+            <p class="event-card--heading">{{ event.name }}</p>
+            <p>{{ event.subtitle }}</p>
+        </div>
+        <div class="event-card__details__section">
+            <p>{{ event.event_range }}</p>
+            <p>{{ event.location }}</p>
+        </div>
+    </div>
+    <a href="/{{ event.slug }}" class="event-card__link">More Info</a>
+</div>

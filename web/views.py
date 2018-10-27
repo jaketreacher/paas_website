@@ -1,6 +1,8 @@
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.db.models import Max, Q
 from django.http import HttpResponse
+from django.shortcuts import redirect, render, get_object_or_404
+from django.utils import timezone
 
 from .models import Event
 
@@ -38,8 +40,21 @@ def contact(request):
     return render(request, "web/pages/contact.html", params)
 
 
+def event_list_view(request):
+    params = {
+        'current_events': Event.objects.filter(status=Event.STATE.ACTIVE),
+        'expired_events': Event.objects.filter(status=Event.STATE.ARCHIVED)
+    }
+    return render(request, "web/pages/event-list.html", params)
+
+
 def event_view(request, slug):
+    # TODO: Expired events use a different template which displays a photo gallery
     event = get_object_or_404(Event, slug=slug)
+
+    if event.status != Event.STATE.ACTIVE:
+        return redirect('home')
+
     params = {
         'event': event
     }

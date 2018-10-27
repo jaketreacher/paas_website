@@ -1,0 +1,16 @@
+{% extends "web/base.html" %}
+
+{% block title %}
+    {{ block.super }} - Events List
+{% endblock title %}
+
+{% block content %}
+    <h1>Current</h1>
+    <div class="events-container">
+        {% for event in current_events %}
+            {% include "web/components/event-card.html" with event=event %}
+        {% empty %}
+            <p>- There are no events -</p>
+        {% endfor %}
+    </div>
+{% endblock content %}

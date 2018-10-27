@@ -13,12 +13,16 @@
         <div class="background">
             <div class="foreground"></div>
         </div>
-        <div class="hang-group">
-            <a class="btn btn-hang" href="{{ event.url }}" target="_blank">Buy Tickets</a>
-        </div>
+        {% if event.booking_url %}
+            <div class="hang-group">
+                <a class="btn btn-hang" href="{{ event.booking_url }}" target="_blank">Buy Tickets</a>
+            </div>
+        {% endif %}
     </div>
 
-    <a id="purchase" class="btn-mobile" href="{{ event.url }}" target="_blank">
-        <span>Buy</span>
-    </a>
+    {% if event.booking_url %}
+        <a id="purchase" class="btn-mobile" href="{{ event.booking_url }}" target="_blank">
+            <span>Buy</span>
+        </a>
+    {% endif %}
 {% endblock content %}
