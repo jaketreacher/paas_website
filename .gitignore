@@ -119,3 +119,4 @@ venv.bak/
 # Deploy
 production.env
 inventory
+.vault_pass.txt

@@ -25,6 +25,11 @@
             repo: "https://github.com/jaketreacher/paas_website.git",
             branch: production
           },
+          db: {
+            name: "{{ vault_db_name }}",
+            user: "{{ vault_db_user }}",
+            pass: "{{ vault_db_pass }}"
+          },
           daemon_name: paas.org.au,
           server_name: paas.org.au,
         }
