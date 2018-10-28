@@ -52,10 +52,10 @@ class Event(models.Model):
         if query_set.count() > 1:  # Range
             start = query_set.first().datetime.strftime(EventDateTime.FORMAT_STRING_SHORT)
             end = query_set.last().datetime.strftime(EventDateTime.FORMAT_STRING_SHORT)
-            formatted_string = f"{start} – {end}"
+            formatted_string = '{} - {}'.format(start, end)
         elif query_set.count() == 1:  # Single
             single = query_set.first().datetime.strftime(EventDateTime.FORMAT_STRING_SHORT)
-            formatted_string = f"{single}"
+            formatted_string = str(single)
         else:  # None
             formatted_string = "- No Dates -"
 
@@ -83,7 +83,7 @@ class Event(models.Model):
         return self.name
 
     def __repr__(self):
-        return f"<Event: '{self}' ({self.pk})>"
+        return '<Event \'{}\' ({})'.format(self, self.pk)
 
 
 class EventDateTime(models.Model):
@@ -99,7 +99,7 @@ class EventDateTime(models.Model):
         return self.datetime.strftime(self.FORMAT_STRING)
 
     def __repr__(self):
-        return f"<EventDateTime: '{self}', {self.event} ({self.pk})>"
+        return '<EventDateTime: \'{}\', {} ({})'.format(self, self.event, self.pk)
 
 
 class EventPage(models.Model):
