@@ -24,8 +24,8 @@ class Event(models.Model):
     subtitle = models.CharField(max_length=128, blank=True, null=True)
     location = models.CharField(max_length=128, blank=True, null=True)
     slug = models.SlugField(max_length=32, unique=True)
-    booking_url = models.URLField(help_text="ex. TryBooking URL", blank=True, null=True)
-    open_date = models.DateTimeField(help_text="The date/time which the event will become visible.")
+    booking_url = models.URLField(help_text='ex. TryBooking URL', blank=True, null=True)
+    open_date = models.DateTimeField(help_text='The date/time which the event will become visible.')
 
     objects = EventManager()
 
@@ -40,14 +40,14 @@ class Event(models.Model):
         max_length=1,
         choices=END_ACTION_CHOICES,
         default=STATE.ARCHIVED,
-        help_text="The action to take after the final event date has passed. "
-                  "Archived events will display under 'Past Events'. Hidden events will not be shown."
+        help_text='The action to take after the final event date has passed. '
+                  'Archived events will display under \'Past Events\'. Hidden events will not be shown.'
     )
 
     def event_range(self):
         query_set = self.eventdatetime_set
 
-        formatted_string = ""
+        formatted_string = ''
 
         if query_set.count() > 1:  # Range
             start = query_set.first().datetime.strftime(EventDateTime.FORMAT_STRING_SHORT)
@@ -57,7 +57,7 @@ class Event(models.Model):
             single = query_set.first().datetime.strftime(EventDateTime.FORMAT_STRING_SHORT)
             formatted_string = str(single)
         else:  # None
-            formatted_string = "- No Dates -"
+            formatted_string = '- No Dates -'
 
         return formatted_string
     event_range.short_description = 'Event Range'
