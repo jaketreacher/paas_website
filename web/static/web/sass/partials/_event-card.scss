@@ -2,10 +2,14 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    @include tablet() {
+        justify-content: start;
+    }
 }
 
 .event-card {
-    height: 550px;
+    height: 500px;
     width: 225px;
 
     margin: 10px;

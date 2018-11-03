@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Current</h1>
+    <h1>Upcoming Events</h1>
     <div class="events-container">
         {% for event in current_events %}
             {% include "web/components/event-card.html" with event=event %}

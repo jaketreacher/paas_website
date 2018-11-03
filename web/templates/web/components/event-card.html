@@ -1,5 +1,7 @@
 <div class="event-card">
-    <div class="event-card__preview" style="background-image: url('{{ event.get_preview_url }}')"></div>
+    <a href="/{{ event.slug }}">
+        <div class="event-card__preview" style="background-image: url('{{ event.get_preview_url }}')"></div>
+    </a>
     <div class="event-card__details">
         <div class="event-card__details__section">
             <p class="event-card--heading">{{ event.name }}</p>
@@ -14,5 +16,4 @@
             {% endif %}
         </div>
     </div>
-    <a href="/{{ event.slug }}" class="event-card__link">More Info</a>
 </div>
