@@ -64,17 +64,19 @@ class Event(models.Model):
 
     @property
     def get_preview_url(self):
-        sizes = ['mobile', 'tablet', 'desktop']
+        """
+        Get the URL of the image that will be displayed on
+        the event-list page. Ideally, this will be the
+        thumbnail.
+        """
+        sizes = ['thumbnail', 'mobile', 'tablet', 'desktop']
 
         for size in sizes:
             image = getattr(self.eventpage, size)
             if image:
-                break
+                return image.url
 
-        if image:
-            return image.url
-        else:
-            return None
+        return None
 
     class Meta:
         ordering = ('open_date',)
@@ -104,6 +106,7 @@ class EventDateTime(models.Model):
 
 class EventPage(models.Model):
     background = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
+    thumbnail = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
     mobile = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
     tablet = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
     desktop = models.ImageField(blank=True, null=True, upload_to='images/%Y/%m/%d/')
