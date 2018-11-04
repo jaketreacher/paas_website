@@ -26,8 +26,19 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
 
+if DEBUG:
+    # Hack to configure VSCode when running tests
+    from pathlib import Path
+    venv_path = Path(__file__).parents[1] / 'venv/bin'
+    if venv_path.exists():
+        import os
+        from collections import OrderedDict
+        PATH = os.environ['PATH'].split(':')
+        PATH.insert(0, str(venv_path))
+        os.environ['PATH'] = ':'.join(list(OrderedDict.fromkeys(PATH)))
+    ALLOWED_HOSTS.append('testserver')
 
 # Application definition
 
@@ -40,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'web',
-    'compressor'
+    'compressor',
 ]
 
 STATICFILES_FINDERS = [
@@ -53,7 +64,7 @@ COMPRESS_ENABLED = not DEBUG
 COMPRESS_OFFLINE = config('COMPRESS_OFFLINE', True, cast=bool)
 
 COMPRESS_PRECOMPILERS = [
-    ('text/x-scss', 'sassc {infile} {outfile}')
+    ('text/x-scss', 'pysassc {infile} {outfile}')
 ]
 
 MIDDLEWARE = [
