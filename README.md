@@ -1,6 +1,6 @@
 # Performing Arts Alumni Society
 
-## Version 0.1.2
+## Version 0.2.1
 
 Django-based Website
 

@@ -1,5 +1,17 @@
 # Release notes
 
+## Version 0.2.1
+- Fix upload permissions
+- Fix subtitle/location displaying "None" (should not displaying anything)
+- Add thumbnail
+- Allow staff/superuser to preview events
+
+## Version 0.2
+- Change node-sass to python-based sassc
+- Add Event list page
+- Add Event page
+- Add timezone to .env
+
 ## Version 0.1.2
 - Enhance reading .env files
 - Configure Ansible deployment
