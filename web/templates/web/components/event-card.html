@@ -1,6 +1,10 @@
 <div class="event-card">
     <a href="/{{ event.slug }}">
-        <div class="event-card__preview" style="background-image: url('{{ event.get_preview_url }}')"></div>
+        {% if event.thumbnail_img %}
+            <div class="event-card__preview" style="background-image: url('{{ event.thumbnail_img.url }}')"></div>
+        {% else %}
+            <div class="event-card__preview" style="background-image: url('https://via.placeholder.com/225x400')"></div>
+        {% endif %}
     </a>
     <div class="event-card__details">
         <div class="event-card__details__section">

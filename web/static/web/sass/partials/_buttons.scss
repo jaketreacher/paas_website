@@ -41,12 +41,21 @@ button {
         @include center;
     }
 
+    &--purchase {
+        bottom: 30px;
+        left: 30px;
+    }
+
     &:hover {
         color: $navbar_font_hover_color;
     }
 
     @include desktop {
         display: none;
+
+        &--no-hide {
+            display: block;
+        }
     }
 }
 

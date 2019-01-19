@@ -1,0 +1,19 @@
+.event-info {
+    margin-bottom: 100px;
+    text-align: center;
+
+    &__hero {
+        width: 100%;
+    }
+
+    &__when {
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+
+    &__about {
+        text-align: justify;
+    }
+}

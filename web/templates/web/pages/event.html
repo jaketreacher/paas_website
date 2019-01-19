@@ -4,24 +4,49 @@
     {{ block.super }} - {{ event }}
 {% endblock title %}
 
-{% block head_extras %}
-    {{ event.eventpage.css|safe }}
-{% endblock head_extras %}
-
 {% block content %}
-    <div id="event-info">
-        <div class="background">
-            <div class="foreground"></div>
-        </div>
-        {% if event.booking_url %}
-            <div class="hang-group">
-                <a class="btn btn-hang" href="{{ event.booking_url }}" target="_blank">Buy Tickets</a>
-            </div>
+    <div class="event-info">
+        {% if event.hero_img %}
+            <img class="event-info__hero" src="{{ event.hero_img.url }}">
+        {% else %}
+            <img class="event-info__hero" src="https://via.placeholder.com/1280x720">
         {% endif %}
+        <div class="event-info__details">
+            <div class="event-info__what">
+                <p>{{ event.name }}</p>
+                {% if event.subtitle %}
+                    <p>{{ event.subtitle }}</p>
+                {% endif %}
+            </div>
+
+            {% if event.location %}
+                <div class="event-info__where">
+                    <p><b>Where</b></p>
+                    <p>{{ event.location }}</p>
+                </div>
+            {% endif %}
+
+            <div class="event-info__when">
+                <p><b>When</b></p>
+                <ul class="event-info__dates">
+                    {% for eventdate in event.eventdatetime_set.all %}
+                        <li>{{ eventdate.datetime }}</li>
+                    {% empty %}
+                        <li>- No Dates -</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% if event.description %}
+                <div class="event-info__about">
+                    {{ event.description|safe|linebreaks }}
+                </div>
+            {% endif %}
+        </div>
     </div>
 
     {% if event.booking_url %}
-        <a id="purchase" class="btn-mobile" href="{{ event.booking_url }}" target="_blank">
+        <a class="btn-mobile btn-mobile--purchase btn-mobile--no-hide" href="{{ event.booking_url }}" target="_blank">
             <span>Buy</span>
         </a>
     {% endif %}

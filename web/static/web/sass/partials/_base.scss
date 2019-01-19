@@ -21,6 +21,7 @@ main {
         min-width: 300px;
         max-width: 800px;
         width: 100%;
+        min-height: 100vh;
         margin: 0 auto;
     
         @include tablet {
@@ -40,6 +41,3 @@ h3 {
     text-transform: uppercase;
     font-weight: inherit;
 }
-
-// Import Individual pages
-@import "../pages/event";
