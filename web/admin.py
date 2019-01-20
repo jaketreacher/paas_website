@@ -1,9 +1,11 @@
 from django.contrib import admin
+from django.contrib.sites.models import Site
 from django.db.models import Count
 from django.conf import settings
 from django.utils.html import mark_safe
+from preferences.admin import PreferencesAdmin
 
-from .models import Event, EventDateTime
+from .models import Event, EventDateTime, SitePreferences
 
 
 class EventDateTimeInline(admin.TabularInline):
@@ -26,3 +28,30 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ['name']
     ordering = ['open_date']
     inlines = [EventDateTimeInline]
+
+
+@admin.register(SitePreferences)
+class SitePreferencesAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    fieldsets = (
+        ('Contact', {
+            'fields': ['email', 'facebook', 'instagram']
+        }),
+        ('Business', {
+            'fields': ['abn']
+        }),
+        ('Forms', {
+            'fields': ['member_form', 'friend_form']
+        }),
+        ('Text', {
+            'fields': ['home_text', 'about_text', 'membership_text', 'friend_text', 'contact_text']
+        })
+    )
+
+
+admin.site.unregister(Site)

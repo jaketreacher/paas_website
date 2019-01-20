@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Case, F, Max, Q, Value, When
 from django.template import loader, Context
 from django.utils import timezone
+from preferences.models import Preferences
 
 import os
 from collections import namedtuple
@@ -94,3 +95,50 @@ class EventDateTime(models.Model):
 
     def __repr__(self):
         return '<EventDateTime: \'{}\', {} ({})'.format(self, self.event, self.pk)
+
+
+class SitePreferences(Preferences):
+    class Meta:
+        verbose_name = 'Preferences'
+        verbose_name_plural = 'Preferences'
+
+    email = models.EmailField(blank=True, null=True)
+    facebook = models.CharField(
+        max_length=50,
+        help_text='Facebook username',
+        blank=True, null=True)
+    instagram = models.CharField(
+        max_length=50,
+        help_text='Instagram username',
+        blank=True, null=True)
+
+    abn = models.CharField(
+        verbose_name='ABN',
+        help_text='Australian Business Number. Include space formatting as desried.',
+        max_length=20, blank=True, null=True)
+
+    member_form = models.URLField(
+        help_text='The link for the member signup form.',
+        blank=True, null=True)
+    friend_form = models.URLField(
+        help_text='The link for the friend signup form.',
+        blank=True, null=True)
+
+    home_text = models.TextField(
+        help_text='The text that will appear on the home page.',
+        blank=True, null=True)
+    about_text = models.TextField(
+        help_text='The text that will appear on the about page.',
+        blank=True, null=True)
+    membership_text = models.TextField(
+        help_text='The text that will appear on the membership page.',
+        blank=True, null=True)
+    friend_text = models.TextField(
+        help_text='The text that will appear on the friend page.',
+        blank=True, null=True)
+    contact_text = models.TextField(
+        help_text='The text that will appear on the contact page.',
+        blank=True, null=True)
+
+    def __str__(self):
+        return 'Site Preferences'
