@@ -16,34 +16,22 @@ def about(request):
 
 
 def memberships(request):
-    # Temporarily grab link from .env
-    params = {
-        'form_link': settings.MEMBER_FORM_LINK
-    }
-    return render(request, 'web/pages/memberships.html', params)
+    return render(request, 'web/pages/memberships.html')
 
 
 def friends(request):
-    params = {
-        'form_link': settings.FRIEND_FORM_LINK
-    }
-    return render(request, 'web/pages/friends.html', params)
+    return render(request, 'web/pages/friends.html')
 
 
 def contact(request):
-    params = {
-        'email': settings.CONTACT_EMAIL,
-        'facebook': settings.CONTACT_FACEBOOK,
-        'instagram': settings.CONTACT_INSTAGRAM,
-        'abn': settings.CONTACT_ABN
-    }
-    return render(request, 'web/pages/contact.html', params)
+    return render(request, 'web/pages/contact.html')
 
 
 def event_list_view(request):
     # staff can see hidden pre-released events (but not hidden expired)
     if request.user.is_staff or request.user.is_superuser:
         prerelease = Event.objects.filter(status=Event.STATE.HIDDEN).filter(open_date__gte=timezone.now())
+        # ce_qs = current event query set
         ce_qs = Event.objects.filter(
             Q(status=Event.STATE.ACTIVE) |
             Q(

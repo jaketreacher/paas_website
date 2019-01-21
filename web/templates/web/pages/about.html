@@ -8,21 +8,12 @@
 {% block content %}
     <div class="about">
         <div class="text">
-            <p>
-                On the wrong side of your 20s?
-                Living the boring 9-5 life?
-                Miss acting and sinking pints at
-                the pub before a rehearsal?
-                Then PAAS is the place for you.
-            </p>
-            <p>
-                The Performing Arts Alumni Society (PAAS) 
-                is home to multiple misfits from all walks of life, 
-                established as the unofficial alumni society for 
-                the Performing Arts Association of Notre Dame Australia, 
-                we're a group of mild alcoholics avoiding adulthood, 
-                based in Fremantle and we're always down for a booze-infused laugh.
-            </p>
+            {% if preferences.SitePreferences.about_title %}
+                <h1>{{ preferences.SitePreferences.about_title | linebreaksbr }}</h1>
+            {% endif %}
+            {% if preferences.SitePreferences.about_text %}
+                {{ preferences.SitePreferences.about_text | linebreaks }}
+            {% endif %}
         </div>
         <div class="hang-group">
             <a class="btn btn-hang" href="{% static 'web/files/PAAS-Constitution.pdf' %}" target="_blank">Constitution</a>

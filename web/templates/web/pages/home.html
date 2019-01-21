@@ -6,14 +6,9 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>
-        The<br>
-        Performing Arts<br>
-        Alumni Society<br>
-        is the answer to<br>
-        all your post-<br>
-        PAANDA prayers.
-    </h1>
+    {% if preferences.SitePreferences.home_title %}
+        <h1>{{ preferences.SitePreferences.home_title | linebreaksbr }}</h1>
+    {% endif %}
     <div class="logo seal">
         <img src="{% static 'web/images/paas_logo.png' %}" width="300px" alt="PAAS Logo">
     </div>

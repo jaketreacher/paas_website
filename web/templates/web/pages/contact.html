@@ -7,24 +7,33 @@
 
 {% block content %}
     <div class="text">
-        <h1>Want to know more?</h1>
-        <p>
-            Have any queries or qualms?<br>
-            Get in touch!
-        </p>
-        <p>
-            <a href="mailto:{{ email }}">{{ email }}</a>
-        </p>
+        {% if preferences.SitePreferences.contact_title %}
+            <h1>{{ preferences.SitePreferences.contact_title }}</h1>
+        {% endif %}
+
+        {% if preferences.SitePreferences.contact_text %}        
+            <p>{{ preferences.SitePreferences.contact_text | linebreaksbr  }}</p>
+        {% endif %}
+        {% if preferences.SitePreferences.email %}
+            <p><a href="mailto:{{ preferences.SitePreferences.email }}">{{ preferences.SitePreferences.email }}</a></p>
+        {% endif %}
     </div>
     <div class="icons">
-        <a href="{{ facebook }}" target="_blank">
-            <img src="{% static 'web/images/facebook.png' %}" alt="Facebook">
-        </a>
-        <a href="{{ instagram }}" target="_blank">
-            <img src="{% static 'web/images/instagram.png' %}" alt="Instagram">
-        </a>
+        {% if preferences.SitePreferences.facebook %}
+            <a href="https://facebook.com/{{ preferences.SitePreferences.facebook }}" target="_blank">
+                <img src="{% static 'web/images/facebook.png' %}" alt="Facebook">
+            </a>
+        {% endif %}
+
+        {% if preferences.SitePreferences.instagram %}            
+            <a href="https://instagram.com/{{ preferences.SitePreferences.instagram }}" target="_blank">
+                <img src="{% static 'web/images/instagram.png' %}" alt="Instagram">
+            </a>
+        {% endif %}
     </div>
     <footer>
-        <span><small>ABN {{ abn }}</small></span>
+        {% if preferences.SitePreferences.abn %}
+            <span><small>ABN {{ preferences.SitePreferences.abn }}</small></span>
+        {% endif %}
     </footer>
 {% endblock content %}

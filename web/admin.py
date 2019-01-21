@@ -39,18 +39,21 @@ class SitePreferencesAdmin(admin.ModelAdmin):
         return False
 
     fieldsets = (
+        ('Home', {
+            'fields': ['home_title']
+        }),
+        ('About', {
+            'fields': ['about_title', 'about_text']
+        }),
+        ('Membership', {
+            'fields': ['membership_title', 'membership_text', 'member_form']
+        }),
+        ('Friend', {
+            'fields': ['friend_title', 'friend_text', 'friend_form']
+        }),
         ('Contact', {
-            'fields': ['email', 'facebook', 'instagram']
+            'fields': ['contact_title', 'contact_text', 'email', 'facebook', 'instagram', 'abn']
         }),
-        ('Business', {
-            'fields': ['abn']
-        }),
-        ('Forms', {
-            'fields': ['member_form', 'friend_form']
-        }),
-        ('Text', {
-            'fields': ['home_text', 'about_text', 'membership_text', 'friend_text', 'contact_text']
-        })
     )
 
 

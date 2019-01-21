@@ -102,6 +102,19 @@ class SitePreferences(Preferences):
         verbose_name = 'Preferences'
         verbose_name_plural = 'Preferences'
 
+    home_title = models.TextField(blank=True, null=True)
+
+    for section in ['about', 'membership', 'friend', 'contact']:
+        locals()['{}_title'.format(section)] = models.CharField(max_length=50, blank=True, null=True)
+        locals()['{}_text'.format(section)] = models.TextField(blank=True, null=True)
+
+    member_form = models.URLField(
+        help_text='The link for the member signup form.',
+        blank=True, null=True)
+    friend_form = models.URLField(
+        help_text='The link for the friend signup form.',
+        blank=True, null=True)
+
     email = models.EmailField(blank=True, null=True)
     facebook = models.CharField(
         max_length=50,
@@ -111,34 +124,10 @@ class SitePreferences(Preferences):
         max_length=50,
         help_text='Instagram username',
         blank=True, null=True)
-
     abn = models.CharField(
         verbose_name='ABN',
         help_text='Australian Business Number. Include space formatting as desried.',
         max_length=20, blank=True, null=True)
-
-    member_form = models.URLField(
-        help_text='The link for the member signup form.',
-        blank=True, null=True)
-    friend_form = models.URLField(
-        help_text='The link for the friend signup form.',
-        blank=True, null=True)
-
-    home_text = models.TextField(
-        help_text='The text that will appear on the home page.',
-        blank=True, null=True)
-    about_text = models.TextField(
-        help_text='The text that will appear on the about page.',
-        blank=True, null=True)
-    membership_text = models.TextField(
-        help_text='The text that will appear on the membership page.',
-        blank=True, null=True)
-    friend_text = models.TextField(
-        help_text='The text that will appear on the friend page.',
-        blank=True, null=True)
-    contact_text = models.TextField(
-        help_text='The text that will appear on the contact page.',
-        blank=True, null=True)
 
     def __str__(self):
         return 'Site Preferences'
