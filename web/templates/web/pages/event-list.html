@@ -1,8 +1,14 @@
 {% extends "web/base.html" %}
+{% load web_extras %}
 
 {% block title %}
     {{ block.super }} - Events List
 {% endblock title %}
+
+{% block opengraph %}
+    <meta property="og:title" content="PAAS – Events">
+    <meta property="og:image" content="{% absolute_uri 'web/images/paas_logo.png' 'static' %}" />
+{% endblock opengraph %}
 
 {% block content %}
     <h1>Upcoming Events</h1>

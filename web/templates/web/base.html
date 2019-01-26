@@ -13,6 +13,10 @@
         {% endblock title %}
     </title>
 
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:type" content="website" />
+    {% block opengraph %}{% endblock opengraph %}
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'web/sass/main.scss' %}">

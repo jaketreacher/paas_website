@@ -1,9 +1,18 @@
 {% extends "web/base.html" %}
 {% load static %}
+{% load web_extras %}
 
 {% block title %}
     {{ block.super }} - Home
 {% endblock title %}
+
+{% block opengraph %}
+    <meta property="og:title" content="PAAS – Home">
+    <meta property="og:image" content="{% absolute_uri 'web/images/paas_logo.png' 'static' %}" />
+    {% if preferences.SitePreferences.home_title %}
+        <meta property="og:description" content="{{ preferences.SitePreferences.home_title|truncatewords:25 }}" />
+    {% endif %}
+{% endblock opengraph %}
 
 {% block content %}
     {% if preferences.SitePreferences.home_title %}

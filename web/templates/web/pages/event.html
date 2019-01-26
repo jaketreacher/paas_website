@@ -1,15 +1,31 @@
 {% extends "web/base.html" %}
+{% load web_extras %}
 
 {% block title %}
     {{ block.super }} - {{ event }}
 {% endblock title %}
+
+{% block opengraph %}
+    <meta property="og:title" content="{{ event.name }}">
+    {% if event.hero_img %}
+        <meta property="og:image" content="{% absolute_uri event.hero_img.url %}" />
+    {% else %}
+        <meta property="og:image" content="{% absolute_uri 'web/images/paas_logo.png' 'static' %}" />
+    {% endif %}
+    {% if event.description %}
+        <meta property="og:description" content="{{ event.description|truncatewords:25 }}" />
+    {% endif %}
+{% endblock opengraph %}
 
 {% block content %}
     <div class="event-info">
         {% if event.hero_img %}
             <img class="event-info__hero" src="{{ event.hero_img.url }}">
         {% else %}
-            <img class="event-info__hero" src="https://via.placeholder.com/1280x720">
+            {% if request.user.is_staff or request.user.is_superuser %}
+                <img class="event-info__hero" src="https://via.placeholder.com/1280x720">
+                <p><i><small>This placeholder image only appears for staff.</small></i></p>
+            {% endif %}
         {% endif %}
         <div class="event-info__details">
             <div class="event-info__what">
