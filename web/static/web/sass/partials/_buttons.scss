@@ -41,55 +41,49 @@
     }
 }
 
-a {
-    &.btn {
-        color: inherit;
-        text-decoration: inherit;
-
-        &:hover {
-            color: white;
-        }
-    }
-
-    &.btn-hang {
-        text-transform: uppercase;
-        border: 10px solid black;
-        border-radius: 50px;
-        line-height: 2em;
-        width: 350px;
-        padding: 10px;
-
-        font-size: 1.25em;
-
-        margin: 10px auto;
-        display: block;
-        text-align: center;
-
-        flex-shrink: 0;
-
-        &:hover {
-            border-color: white;
-        }
-
-        @include desktop {
-            margin: 10px; // space between flex items
-        }
-    }
-}
-
-.hang-group {
+.action-btns {
     @include desktop {
         position: fixed;
-        display: flex;
-        flex-direction: row-reverse;
         top: 0;
         right: 350px;
+        
         width: 100vh;
+        display: flex;
+        flex-direction: row-reverse;
+
         transform-origin: top right;
         transform: rotate(-90deg);
         overflow-x: scroll;
     }
 }
+
+.action-btn {
+    display: block;
+    padding: 10px;
+    width: 350px;
+    margin: 10px auto;
+    flex-shrink: 0;
+
+    color: inherit;
+    border: 10px solid black;
+    border-radius: 50px;
+
+    font-size: 1.25em;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: inherit;
+    text-transform: uppercase;
+
+    &:hover {
+        color: white;
+        border-color: white;
+    }
+
+    @include desktop {
+        margin: 10px; // space between flex items
+    }
+}
+
 
 .icons {
     a {
