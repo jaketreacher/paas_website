@@ -1,5 +1,11 @@
 # Release notes
 
+## Version 0.2.2
+- Implement OpenGraph meta tags
+- Add user-customisable text areas
+- Redesign Event page
+- Refactor legacy SCSS in line with BEM styleguide
+
 ## Version 0.2.1
 - Fix upload permissions
 - Fix subtitle/location displaying "None" (should not displaying anything)
