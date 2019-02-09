@@ -12,7 +12,7 @@
 
 {% block content %}
     <h1>Upcoming Events</h1>
-    <div class="events-container">
+    <div class="event-cards">
         {% for event in current_events %}
             {% include "web/components/event-card.html" with event=event %}
         {% empty %}

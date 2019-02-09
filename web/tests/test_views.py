@@ -65,44 +65,44 @@ class EventViewTest(TestCase):
         self.assertTemplateUsed(response, 'web/pages/event.html')
 
     def test_open_even_listed_for_guest(self):
-        response = self.client.get(reverse('event-list'))
+        response = self.client.get(reverse('events'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'web/pages/event-list.html')
+        self.assertTemplateUsed(response, 'web/pages/events.html')
         event_list = self.get_event_list(response)
         self.assertTrue('/open-event' in event_list)
 
     def test_open_event_listed_for_all_users(self):
         for user in User.objects.all():
             self.client.force_login(user)
-            response = self.client.get(reverse('event-list'))
+            response = self.client.get(reverse('events'))
             self.assertEqual(response.status_code, 200)
-            self.assertTemplateUsed(response, 'web/pages/event-list.html')
+            self.assertTemplateUsed(response, 'web/pages/events.html')
             event_list = self.get_event_list(response)
             self.assertTrue('/open-event' in event_list)
 
     def test_closed_event_hidden_for_guest(self):
-        response = self.client.get(reverse('event-list'))
+        response = self.client.get(reverse('events'))
         self.assertEqual(response.status_code, 200)
         event_list = self.get_event_list(response)
         self.assertFalse('/closed-event' in event_list)
 
     def test_closed_event_hidden_for_standard_user(self):
         self.client.force_login(User.objects.get(username='standard_user'))
-        response = self.client.get(reverse('event-list'))
+        response = self.client.get(reverse('events'))
         self.assertEqual(response.status_code, 200)
         event_list = self.get_event_list(response)
         self.assertFalse('/closed-event' in event_list)
 
     def test_closed_event_listed_for_staff_user(self):
         self.client.force_login(User.objects.get(username='staff_user'))
-        response = self.client.get(reverse('event-list'))
+        response = self.client.get(reverse('events'))
         self.assertEqual(response.status_code, 200)
         event_list = self.get_event_list(response)
         self.assertTrue('/closed-event' in event_list)
 
     def test_closed_event_listed_for_super_user(self):
         self.client.force_login(User.objects.get(username='super_user'))
-        response = self.client.get(reverse('event-list'))
+        response = self.client.get(reverse('events'))
         self.assertEqual(response.status_code, 200)
         event_list = self.get_event_list(response)
         self.assertTrue('/closed-event' in event_list)

@@ -47,7 +47,7 @@ def event_list_view(request):
         'expired_events': Event.objects.filter(status=Event.STATE.ARCHIVED)
     }
 
-    return render(request, 'web/pages/event-list.html', params)
+    return render(request, 'web/pages/events.html', params)
 
 
 def event_view(request, slug):
