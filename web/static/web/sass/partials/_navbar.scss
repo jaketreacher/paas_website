@@ -1,4 +1,4 @@
-#main-nav {
+.nav-menu {
     z-index: $z_navbar;
 
     color: $navbar_font_color;
@@ -11,17 +11,25 @@
     width: 100%;
     height: 100%;
 
+    &--collapsed {
+        display: none;
+
+        @include desktop {
+            display: block;
+        }
+    }
+
     @include desktop {
         width: $navbar_width;
         left: auto;
         right: 0;
 
-        button {
+        &__close-btn {
             display: none;
         }
     }
 
-    ul {
+    &__item-list {
         @include expand;
         list-style-type: none;
         padding: 0;
@@ -39,43 +47,51 @@
         }
     }
 
-    li {
+    &__item {
         font-size: 25px;
         margin-bottom: 20px;
         text-transform: uppercase;
         cursor: pointer;
 
-        &.selected {
+        &--selected {
             color: $navbar_font_select_color;
         }
 
         &:hover {
             color: $navbar_font_hover_color;
         }
-    }
 
-    a {
-        color: inherit;
-        text-decoration: inherit;
-        display: block;
-        width: 100%;
-    }
-
-    &.collapsed {
-        display: none;
-
-        @include desktop {
+        a {
+            color: inherit;
+            text-decoration: inherit;
             display: block;
+            width: 100%;
         }
     }
-}
 
-#navbar-toggle {
-    z-index: $z_navbar;
-    bottom: 30px;
-    right: 30px;
+    &__close-btn {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        bottom: 30px;
+        right: 10px;
 
-    &.hidden {
-        display: none;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+
+        color: $navbar_font_color;
+
+        &::after {
+            @include center;
+            content: "\2715";
+            font-size: 40px;
+        }
+    
+        &:hover {
+            color: $navbar_font_hover_color;
+        }
     }
 }

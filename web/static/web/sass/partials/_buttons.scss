@@ -1,32 +1,4 @@
-button {
-    &.close {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        top: 10px;
-        right: 10px;
-
-        padding: 0;
-        border: none;
-        background-color: transparent;
-        outline: none;
-        cursor: pointer;
-
-        color: $navbar_font_color;
-    }
-
-    &::after {
-        @include center;
-        content: "\2715";
-        font-size: 40px;
-    }
-
-    &:hover {
-        color: $navbar_font_hover_color;
-    }
-}
-
-.btn-mobile {
+.fab {
     position: fixed;
     width: 60px;
     height: 60px;
@@ -37,13 +9,23 @@ button {
     box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
     cursor: pointer;
 
-    span {
+    &__text {
         @include center;
+    }
+
+    &--navbar {
+        z-index: $z_navbar;
+        bottom: 30px;
+        right: 30px;
     }
 
     &--purchase {
         bottom: 30px;
         left: 30px;
+    }
+
+    &--hidden {
+        display: none;
     }
 
     &:hover {

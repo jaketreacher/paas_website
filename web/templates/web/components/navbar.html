@@ -1,19 +1,19 @@
 {% load web_extras %}
-<nav id="main-nav" class="collapsed">
-    <ul>
-        <li class="{% selected 'home' %}"><a href="{% url 'home' %}">Home</a></li>
-        <li class="{% selected 'about' %}"><a href="{% url 'about' %}">About</a></li>
-        <li class="{% selected 'memberships' %}"><a href="{% url 'memberships' %}">Memberships</a></li>
-        <li class="{% selected 'friends' %}"><a href="{% url 'friends' %}">Friends</a></li>
-        <li class="{% selected 'event-list' %}"><a href="{% url 'event-list' %}">Events</a></li>
-        <li class="{% selected 'contact' %}"><a href="{% url 'contact' %}">Contact</a></li>
+<nav class="nav-menu nav-menu--collapsed" id="nav-main">
+    <ul class="nav-menu__item-list">
+        <li class="nav-menu__item {% selected 'home' %}"><a href="{% url 'home' %}">Home</a></li>
+        <li class="nav-menu__item {% selected 'about' %}"><a href="{% url 'about' %}">About</a></li>
+        <li class="nav-menu__item {% selected 'memberships' %}"><a href="{% url 'memberships' %}">Memberships</a></li>
+        <li class="nav-menu__item {% selected 'friends' %}"><a href="{% url 'friends' %}">Friends</a></li>
+        <li class="nav-menu__item {% selected 'event-list' %}"><a href="{% url 'event-list' %}">Events</a></li>
+        <li class="nav-menu__item {% selected 'contact' %}"><a href="{% url 'contact' %}">Contact</a></li>
     </ul>
-    <button class="close"
-            target-nav="#main-nav"
-            target-toggle="#navbar-toggle">
+    <button class="nav-menu__close-btn"
+            target-nav="#nav-main"
+            target-toggle="#nav-toggle">
     </button>
 </nav>
 
-<div id="navbar-toggle" class="btn-mobile" target="#main-nav">
-    <span>Menu</span>
+<div id="nav-toggle" class="fab fab--navbar" target="#nav-main">
+    <span class="fab__text">Menu</span>
 </div>

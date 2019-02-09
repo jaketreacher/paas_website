@@ -14,7 +14,7 @@ def selected(context, name):
     url = reverse(name)
 
     if path == url:
-        return 'selected'
+        return 'nav-menu__item--selected'
 
 
 @register.simple_tag(takes_context=True)
