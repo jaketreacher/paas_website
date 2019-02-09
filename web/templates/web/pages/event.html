@@ -19,6 +19,14 @@
 
 {% block content %}
     <div class="event-info">
+        <div class="event-info__what">
+            <h1>{{ event.name }}</h1>
+                {% if event.subtitle %}
+                    <h2>
+                        {{ event.subtitle }}
+                    </h2>
+                {% endif %}
+        </div>
         {% if event.hero_img %}
             <img class="event-info__hero" src="{{ event.hero_img.url }}">
         {% else %}
@@ -27,42 +35,32 @@
                 <p><i><small>This placeholder image only appears for staff.</small></i></p>
             {% endif %}
         {% endif %}
-        <div class="event-info__details">
-            <div class="event-info__what">
-                <p>{{ event.name }}</p>
-                {% if event.subtitle %}
-                    <p>{{ event.subtitle }}</p>
-                {% endif %}
-            </div>
-
-            {% if event.location %}
-                <div class="event-info__where">
-                    <p><b>Where</b></p>
-                    <p>{{ event.location }}</p>
-                </div>
-            {% endif %}
-
-            <div class="event-info__when">
-                <p><b>When</b></p>
-                <ul class="event-info__dates">
-                    {% for eventdate in event.eventdatetime_set.all %}
-                        <li>{{ eventdate.datetime }}</li>
-                    {% empty %}
-                        <li>- No Dates -</li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            {% if event.description %}
-                <div class="event-info__about">
-                    {{ event.description|safe|linebreaks }}
-                </div>
-            {% endif %}
+        <div class="event-info__when">
+            <p><b>When</b></p>
+            <ul class="event-info__dates">
+                {% for eventdate in event.eventdatetime_set.all %}
+                    <li>{{ eventdate.datetime }}</li>
+                {% empty %}
+                    <li>- No Dates -</li>
+                {% endfor %}
+            </ul>
         </div>
+        {% if event.location %}
+            <div class="event-info__where">
+                <p><b>Where</b></p>
+                <p>{{ event.location }}</p>
+            </div>
+        {% endif %}
+
+        {% if event.description %}
+            <div class="event-info__about">
+                {{ event.description|safe|linebreaks }}
+            </div>
+        {% endif %}
     </div>
 
     {% if event.booking_url %}
-        <a class="fab fab--purchase fab--no-hide" href="{{ event.booking_url }}" target="_blank">
+        <a class="fab --purchase --no-hide" href="{{ event.booking_url }}" target="_blank">
             <span class="fab__text">Buy</span>
         </a>
     {% endif %}
