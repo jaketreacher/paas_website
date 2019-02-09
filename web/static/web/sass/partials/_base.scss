@@ -8,6 +8,7 @@ body {
 }
 
 main {
+    // Layout between content area and navbar
     position: relative;
     min-height: 100vh;
 
@@ -16,6 +17,7 @@ main {
     }
 
     > div {
+        // Layout of content inside of content area
         padding: 10px;
     
         min-width: 300px;
