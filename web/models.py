@@ -20,10 +20,25 @@ class EventManager(models.Manager):
             ))
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=128)
+    details = models.TextField(blank=True, null=True)
+    map_url = models.URLField(
+        max_length=512,
+        help_text='Enter the `src` component of an embedded map.',
+        blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return '<Event \'{}\' ({})'.format(self, self.pk)
+
+
 class Event(models.Model):
     name = models.CharField(max_length=128)
     subtitle = models.CharField(max_length=128, blank=True, null=True)
-    location = models.CharField(max_length=128, blank=True, null=True)
+    location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True)
     slug = models.SlugField(max_length=32, unique=True)
     booking_url = models.URLField(help_text='ex. TryBooking URL', blank=True, null=True)
     open_date = models.DateTimeField(help_text='The date/time which the event will become visible.')

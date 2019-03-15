@@ -35,6 +35,11 @@
                 <p><i><small>This placeholder image only appears for staff.</small></i></p>
             {% endif %}
         {% endif %}
+        {% if event.description %}
+            <div class="event-info__about">
+                {{ event.description|safe|linebreaks }}
+            </div>
+        {% endif %}
         <div class="event-info__when">
             <p><b>When</b></p>
             <ul class="event-info__dates">
@@ -48,13 +53,13 @@
         {% if event.location %}
             <div class="event-info__where">
                 <p><b>Where</b></p>
-                <p>{{ event.location }}</p>
-            </div>
-        {% endif %}
-
-        {% if event.description %}
-            <div class="event-info__about">
-                {{ event.description|safe|linebreaks }}
+                <p>{{ event.location.name }}</p>
+                {% if event.location.details %}
+                    <p>{{ event.location.details | linebreaksbr }}</p>
+                {% endif %}
+                {% if event.location.map_url %}
+                    <iframe class="event-info__map" src="{{ event.location.map_url|safe|escape }}"></iframe>
+                {% endif %}
             </div>
         {% endif %}
     </div>

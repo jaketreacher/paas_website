@@ -5,7 +5,12 @@ from django.conf import settings
 from django.utils.html import mark_safe
 from preferences.admin import PreferencesAdmin
 
-from .models import Event, EventDateTime, SitePreferences
+from .models import Event, EventDateTime, SitePreferences, Location
+
+
+@admin.register(Location)
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ['name', 'details']
 
 
 class EventDateTimeInline(admin.TabularInline):

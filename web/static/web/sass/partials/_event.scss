@@ -14,6 +14,12 @@
     }
 
     &__about {
-        text-align: justify;
+        text-align: center;
+    }
+
+    &__map {
+        border: 0;
+        width: 100%;
+        height: 300px;
     }
 }
