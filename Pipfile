@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest-django = "*"
+beautifulsoup4 = "*"
+pytest-cov = "*"
+flake8 = "*"
+
+[packages]
+django = "<2.2"
+django-compressor = "*"
+django-extensions = "*"
+django-preferences = "*"
+gunicorn = "*"
+libsass = "*"
+python-decouple = "*"
+Pillow = "*"
+
+[requires]
+python_version = "3"
