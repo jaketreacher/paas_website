@@ -18,6 +18,7 @@ gunicorn = "*"
 libsass = "*"
 python-decouple = "*"
 Pillow = "*"
+django-filer = "*"
 
 [requires]
 python_version = "3"

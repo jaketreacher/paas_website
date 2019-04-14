@@ -1,10 +1,10 @@
 from django.db import models
-from django.db.models import Case, F, Max, Q, Value, When
-from django.template import loader, Context
+from django.db.models import Case, Max, Value, When
 from django.utils import timezone
 from preferences.models import Preferences
 
-import os
+from filer.fields.image import FilerImageField
+from filer.fields.file import FilerFileField
 from collections import namedtuple
 
 
@@ -43,11 +43,15 @@ class Event(models.Model):
     booking_url = models.URLField(help_text='ex. TryBooking URL', blank=True, null=True)
     open_date = models.DateTimeField(help_text='The date/time which the event will become visible.')
 
-    thumbnail_img = models.ImageField(
-        blank=True, null=True, upload_to='images/%Y/%m/%d/',
+    thumbnail_img = FilerImageField(
+        blank=True, null=True,
+        related_name='thumbnail_img_event',
+        on_delete=models.SET_NULL,
         help_text='The image that will display in the list of events.')
-    hero_img = models.ImageField(
-        blank=True, null=True, upload_to='images/%Y/%m/%d/',
+    hero_img = FilerImageField(
+        blank=True, null=True,
+        related_name='hero_img_event',
+        on_delete=models.SET_NULL,
         help_text='The header image that will display on the event page.')
     description = models.TextField(blank=True, null=True)
 

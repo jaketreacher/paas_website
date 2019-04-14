@@ -21,7 +21,6 @@ def reverse_func(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('preferences', '0002_auto_20181220_0803'),
         ('web', '0001_initial'),
     ]
 

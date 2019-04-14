@@ -55,6 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_extensions',
     'preferences',
+    'easy_thumbnails',
+    'filer',
+    'mptt',
     'web',
     'compressor',
 ]
