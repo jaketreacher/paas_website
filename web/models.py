@@ -127,12 +127,31 @@ class SitePreferences(Preferences):
         locals()['{}_title'.format(section)] = models.CharField(max_length=50, blank=True, null=True)
         locals()['{}_text'.format(section)] = models.TextField(blank=True, null=True)
 
+    about_constitution = FilerFileField(
+        blank=True, null=True,
+        related_name='about_constitution_preferences',
+        on_delete=models.SET_NULL,
+        help_text='The "Constitution" file'
+    )
+
     member_form = models.URLField(
         help_text='The link for the member signup form.',
         blank=True, null=True)
+    member_principles = FilerFileField(
+        blank=True, null=True,
+        related_name='member_principles_preferences',
+        on_delete=models.SET_NULL,
+        help_text='The "Membership Principles" file'
+    )
     friend_form = models.URLField(
         help_text='The link for the friend signup form.',
         blank=True, null=True)
+    friend_principles = FilerFileField(
+        blank=True, null=True,
+        related_name='friend_principles_preferences',
+        on_delete=models.SET_NULL,
+        help_text='The "Friend Principles" file'
+    )
 
     email = models.EmailField(blank=True, null=True)
     facebook = models.CharField(

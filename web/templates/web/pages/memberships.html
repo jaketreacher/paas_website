@@ -24,7 +24,9 @@
         {% endif %}
     </div>
     <div class="action-btns">
-        <a class="action-btn" href="{% static 'web/files/Membership-Principles.pdf' %}" target="_blank">Membership Principles</a>
+        {% if preferences.SitePreferences.member_principles %}
+            <a class="action-btn" href="{{ preferences.SitePreferences.member_principles.url }}" target="_blank">Membership Principles</a>
+        {% endif %}
         {% if preferences.SitePreferences.member_form %}
             <a class="action-btn" href="{{ preferences.SitePreferences.member_form }}" target="_blank">Join Now</a>
         {% endif %}
