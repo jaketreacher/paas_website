@@ -25,7 +25,9 @@
         {% endif %}
     </div>
     <div class="action-btns">
-        <a class="action-btn" href="{% static 'web/files/Friends-of-PAAS-Principles.pdf' %}" target="_blank">Subscription Principles</a>
+        {% if preferences.SitePreferences.friend_principles %}
+            <a class="action-btn" href="{{ preferences.SitePreferences.friend_principles.url }}" target="_blank">Subscription Principles</a>
+        {% endif %}
         {% if preferences.SitePreferences.friend_form %}
             <a class="action-btn" href="{{ preferences.SitePreferences.friend_form }}" target="_blank">Join Now</a>
         {% endif %}

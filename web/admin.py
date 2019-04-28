@@ -48,13 +48,13 @@ class SitePreferencesAdmin(admin.ModelAdmin):
             'fields': ['home_title']
         }),
         ('About', {
-            'fields': ['about_title', 'about_text']
+            'fields': ['about_title', 'about_text', 'about_constitution']
         }),
         ('Membership', {
-            'fields': ['membership_title', 'membership_text', 'member_form']
+            'fields': ['membership_title', 'membership_text', 'member_form', 'member_principles']
         }),
         ('Friend', {
-            'fields': ['friend_title', 'friend_text', 'friend_form']
+            'fields': ['friend_title', 'friend_text', 'friend_form', 'friend_principles']
         }),
         ('Contact', {
             'fields': ['contact_title', 'contact_text', 'email', 'facebook', 'instagram', 'abn']

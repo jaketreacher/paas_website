@@ -25,7 +25,9 @@
             {% endif %}
         </div>
         <div class="action-btns">
-            <a class="action-btn" href="{% static 'web/files/PAAS-Constitution.pdf' %}" target="_blank">Constitution</a>
+        {% if preferences.SitePreferences.about_constitution %}
+            <a class="action-btn" href="{{ preferences.SitePreferences.about_constitution.url }}" target="_blank">Constitution</a>
+        {% endif %}
         </div>
         <div class="logo">
             <img src="{% static 'web/images/paas_logo.png' %}" alt="PAAS Logo">
