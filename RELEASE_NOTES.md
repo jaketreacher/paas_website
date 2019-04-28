@@ -1,5 +1,10 @@
 # Release notes
 
+## Version 0.3.0
+- Add Location to Event
+- Migrate to pipenv
+- Convert uploads to user Filer
+
 ## Version 0.2.2
 - Implement OpenGraph meta tags
 - Add user-customisable text areas
