@@ -9,11 +9,8 @@
 }
 
 .event-card {
-    height: 500px;
     width: 225px;
-
     margin: 10px;
-    overflow: hidden;
 
     &__preview {
         margin: 0 auto;
@@ -35,7 +32,6 @@
 
             p {
                 margin: 0;
-                white-space: nowrap;
             }
         }
     }
